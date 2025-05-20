@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-
+import PushPagebutton from '~/components/PushPagebutton.vue'
 const router = useRouter()
 
 const text = ref('')
@@ -18,13 +18,6 @@ const addComplete = (index: number) => {
   toDo.value.splice(index, 1)
 }
 
-const pushPage = () => {
-  router.push('/complete')
-}
-
-console.log(toDo.value);
-console.log(complete.value);
-
 </script>
 
 <template>
@@ -33,11 +26,7 @@ console.log(complete.value);
       {{ count }}
     </p>
   </v-row> -->
-  <v-row class="ma-10" justify="center">
-    <v-btn icon rounded @click="pushPage">
-      完了済み
-    </v-btn>
-  </v-row>
+  <PushPageButton title="完了済み" path="/complete" />
   <v-row class="ma-10 text-5xl" justify="center">
     <v-text-field v-model="text"></v-text-field>
     <v-btn icon @click="addToDo">
